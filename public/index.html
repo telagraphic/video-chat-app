@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Conferencing</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="header">
+                <h1>Video Conference</h1>
+                <div class="controls">
+                    <button id="muteBtn" class="control-btn">🔇 Mute</button>
+                    <button id="videoBtn" class="control-btn">📹 Stop Video</button>
+                    <div class="participant-count">
+                        <span id="participantCount">1</span> participant(s)
+                    </div>
+                </div>
+            </div>
+            
+            <div id="videoGrid" class="video-grid">
+                <div id="localVideoContainer" class="video-container">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                    <div class="video-label">You</div>
+                </div>
+            </div>
+
+            <div id="permissionPrompt" class="permission-prompt">
+                <div class="permission-content">
+                    <h2>Enable Camera & Microphone</h2>
+                    <p>Click the button below to allow access to your camera and microphone. Your browser will ask for permission.</p>
+                    <button id="enableMediaBtn" class="enable-btn" type="button">Enable Camera & Microphone</button>
+                    <button id="refreshBtn" class="refresh-btn" type="button" style="display: none; margin-top: 1rem; padding: 0.5rem 1rem; background: #3a3a3a; border: none; color: #fff; border-radius: 6px; cursor: pointer;">Refresh Page</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-sidebar">
+            <div class="chat-header">
+                <h2>Chat</h2>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Type a message or paste a link..." />
+                <button id="sendBtn" class="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
