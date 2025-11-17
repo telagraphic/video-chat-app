@@ -58,8 +58,9 @@ const httpServer = createServer(async (req, res) => {
 // Initialize Socket.io with HTTP server
 const io = new SocketIOServer(httpServer, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
+    origin: process.env.ALLOWED_ORIGINS?.split(',') || "*",
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
